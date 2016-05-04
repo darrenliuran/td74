@@ -53,6 +53,11 @@ class SiteController extends Controller
         ];
     }
 
+    public function actionTest()
+    {
+        echo 1;exit;
+    }
+
     public function actionIndex()
     {
         return $this->render('index');
