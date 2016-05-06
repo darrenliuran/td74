@@ -2,20 +2,17 @@
 
 namespace backend\controllers;
 
-use yii;
-use yii\web\Controller;
-
 /**
- * Created by PhpStorm.
- * User: Administrator
- * Date: 2015/10/27 0027
- * Time: ���� 4:18
+ * TestController.php file
+ * User: LiuRan
+ * Date: 2016/5/6 0006
+ * Time: 下午 1:05
  */
 
-class TestController extends Controller
+class TestController extends \common\components\controllers\BSController
 {
     public function actionIndex()
     {
-        echo 'site-index';
+        echo 'test-index';
     }
 }

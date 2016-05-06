@@ -5,7 +5,7 @@ namespace common\models\member;
 use Yii;
 
 /**
- * This is the model class for table "{{%os_admin_member}}".
+ * This is the model class for table "{{%admin_member}}".
  *
  * @property string $id
  * @property string $nick
@@ -18,14 +18,14 @@ use Yii;
  * @property integer $update_time
  * @property string $update_ip
  */
-class AdminMemberModel extends \yii\db\ActiveRecord
+class AdminMemberModel extends \common\components\models\BSModel
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return '{{%os_admin_member}}';
+        return '{{%admin_member}}';
     }
 
     /**
