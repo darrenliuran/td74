@@ -2,6 +2,7 @@
 
 namespace backend\components;
 
+use backend\models\member\IdentityMemberModel;
 use yii;
 
 /**
@@ -13,10 +14,20 @@ use yii;
 class WebUser extends \yii\web\User
 {
     /**
-     * 获取店铺Id
+     * 获取用户Id
      */
     public function getUserId()
     {
         return Yii::$app->user->identity->getId();
+    }
+
+    /**
+     * 用户身份
+     * @param $id
+     * @return null|static
+     */
+    public static function findIdentity($id)
+    {
+        return IdentityMemberModel::findOne($id);
     }
 }

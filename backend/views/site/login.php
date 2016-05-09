@@ -10,26 +10,28 @@ use yii\bootstrap\ActiveForm;
 $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>Please fill out the following fields to login:</p>
+<div class="middle-box text-center loginscreen animated fadeInDown">
+    <div>
+        <h3>Welcome to home</h3>
 
-    <div class="row">
-        <div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
+        <?php $form = ActiveForm::begin([
+            'id' => 'login-form',
+            'method' => 'post',
+            'action' => \yii\helpers\Url::to(['/site/login']),
+            'options' => [
+                'class' => 'm-t'
+            ]
+        ]); ?>
+            <div class="form-group">
+                <?= Html::activeInput('input', $adminMemberModel, 'nick', ['class' => 'form-control', 'placeholder' => '用户名']) ?>
+            </div>
+            <div class="form-group">
+                <?= Html::activePasswordInput($adminMemberModel, 'password', ['class' => 'form-control', 'placeholder' => '密码']) ?>
+            </div>
+            <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
+        <?php ActiveForm::end(); ?>
 
-                <?= $form->field($model, 'username') ?>
-
-                <?= $form->field($model, 'password')->passwordInput() ?>
-
-                <?= $form->field($model, 'rememberMe')->checkbox() ?>
-
-                <div class="form-group">
-                    <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-                </div>
-
-            <?php ActiveForm::end(); ?>
-        </div>
+        <p class="m-t"> <small>Inspinia we app framework base on Bootstrap 3 &copy; 2014</small> </p>
     </div>
 </div>

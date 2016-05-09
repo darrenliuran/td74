@@ -37,6 +37,7 @@ class AdminMemberModel extends \common\components\models\BSModel
             [['login_time', 'add_time', 'update_time'], 'integer'],
             [['nick', 'name'], 'string', 'max' => 64],
             [['email'], 'string', 'max' => 128],
+            [['email'], 'unique', 'message' => '油箱已存在'],
             [['password'], 'string', 'max' => 32],
             [['add_ip', 'update_ip'], 'string', 'max' => 15]
         ];

@@ -9,7 +9,7 @@ $params = array_merge(
 return [
     'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
-    'defaultRoute' => 'test/index',
+    'defaultRoute' => 'site/index',
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
     'modules' => [
@@ -19,6 +19,14 @@ return [
         ],
     ],
     'components' => [
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'rules' => [
+                'login' => 'site/login',
+                'logout' => 'site/logout'
+            ],
+        ],
         'user' => [
             'identityClass' => 'backend\components\WebUser',
             'enableAutoLogin' => true,

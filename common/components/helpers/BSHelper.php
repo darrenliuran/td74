@@ -1,6 +1,6 @@
 <?php
 
-namespace common\components\helper;
+namespace common\components\helpers;
 
 use Yii;
 use yii\helpers\Html;
@@ -125,6 +125,7 @@ class BSHelper
         {
             return str_repeat($replaceChar, $strLength);
         }
+
         if (($leftLength + $rightLength) >= $strLength)
         {
             return str_repeat($replaceChar, $strLength);
@@ -288,5 +289,15 @@ class BSHelper
         }
 
         return NULL;
+    }
+
+    /**
+     * 密码加密
+     * @param $password
+     * @return string
+     */
+    public static function encryptionPassword($password)
+    {
+        return md5(md5(strrev($password).Yii::$app->params['emcMd5Key']));
     }
 }
