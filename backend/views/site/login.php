@@ -25,6 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ]); ?>
             <div class="form-group">
                 <?= Html::activeInput('input', $adminMemberModel, 'nick', ['class' => 'form-control', 'placeholder' => '用户名']) ?>
+                <span class="help-block text-danger "><?= Yii::$app->session->getFlash('errorMessage') ?></span>
             </div>
             <div class="form-group">
                 <?= Html::activePasswordInput($adminMemberModel, 'password', ['class' => 'form-control', 'value' => '', 'placeholder' => '密码']) ?>

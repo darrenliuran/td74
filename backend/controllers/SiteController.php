@@ -14,6 +14,7 @@ use backend\models\member\IdentityMemberModel;
 class SiteController extends \yii\web\Controller
 {
     public $layout = 'general';
+
     /**
      * @inheritdoc
      */
@@ -61,6 +62,7 @@ class SiteController extends \yii\web\Controller
      */
     public function actionIndex()
     {
+
         return $this->render('index');
     }
 
@@ -71,26 +73,23 @@ class SiteController extends \yii\web\Controller
     public function actionLogin()
     {
         $identityMemberModel = new IdentityMemberModel();
-
+        echo time();
         if (Yii::$app->request->isPost)
         {
             $memberFormData = Yii::$app->request->post('IdentityMemberModel');
             $username = trim($memberFormData['nick']);
             $password = trim($memberFormData['password']);
 
-            $identityMemberModel->nick = $username;
-            $identityMemberModel->password = $password;
+            /** @var $identityMemberModel IdentityMemberModel 获取用户信息 */
+            $memberModel = IdentityMemberModel::getInfoByUsername($username);
 
-            if ($identityMemberModel->validate(TRUE))
+            if (!is_null($memberModel))
             {
-                /** @var $memberModel IdentityMemberModel 获取用户信息 */
-                $identityMemberModel = IdentityMemberModel::getInfoByUsername($username);
-
-                if ($identityMemberModel->password != BSHelper::encryptionPassword($password))
+                if ($memberModel->password != BSHelper::encryptionPassword($password))
                 {
                     Yii::$app->session->setFlash('errorMessage', '密码错误');
                 }
-                else if (!Yii::$app->user->login($identityMemberModel, 604800))
+                else if (!Yii::$app->user->login($memberModel, 604800))
                 {
                     Yii::$app->session->setFlash('errorMessage', '登录失败');
                 }
@@ -98,6 +97,12 @@ class SiteController extends \yii\web\Controller
                 {
                     $this->redirect('/default');
                 }
+
+                $identityMemberModel = $memberModel;
+            }
+            else
+            {
+                Yii::$app->session->setFlash('errorMessage', '用户不存在');
             }
         }
 
