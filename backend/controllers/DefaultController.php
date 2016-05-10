@@ -18,6 +18,6 @@ class DefaultController extends \backend\components\controllers\BKController
      */
     public function actionIndex()
     {
-        echo 'default-index';
+        return $this->render('index');
     }
 }

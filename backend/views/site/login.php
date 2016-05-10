@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= Html::activeInput('input', $adminMemberModel, 'nick', ['class' => 'form-control', 'placeholder' => '用户名']) ?>
             </div>
             <div class="form-group">
-                <?= Html::activePasswordInput($adminMemberModel, 'password', ['class' => 'form-control', 'placeholder' => '密码']) ?>
+                <?= Html::activePasswordInput($adminMemberModel, 'password', ['class' => 'form-control', 'value' => '', 'placeholder' => '密码']) ?>
             </div>
             <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
         <?php ActiveForm::end(); ?>
