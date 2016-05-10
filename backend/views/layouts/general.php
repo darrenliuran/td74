@@ -29,7 +29,6 @@ AppAsset::register($this);
     <script src="<?= Yii::$app->params['cssUrl'] ?>/js/jquery-2.1.1.js"></script>
     <script src="<?= Yii::$app->params['cssUrl'] ?>/js/bootstrap.min.js"></script>
 </head>
-
 <body>
 <?php $this->beginBody() ?>
     <?= $content ?>
