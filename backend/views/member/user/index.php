@@ -9,13 +9,13 @@
         <h2>用户管理</h2>
         <ol class="breadcrumb">
             <li>
-                <a href="<?= Url::to(['/member/user']); ?>">Home</a>
+                <a href="<?= Url::to(['/default']); ?>">首页</a>
             </li>
             <li>
-                <a>E-commerce</a>
+                <a href="<?= Url::to(['/member/user']); ?>">用户管理</a>
             </li>
             <li class="active">
-                <strong>Product list</strong>
+                <strong>列表</strong>
             </li>
         </ol>
     </div>

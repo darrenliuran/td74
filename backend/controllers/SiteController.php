@@ -13,6 +13,7 @@ use backend\models\member\IdentityMemberModel;
  */
 class SiteController extends \yii\web\Controller
 {
+    public $layout = 'general';
     /**
      * @inheritdoc
      */

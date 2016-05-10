@@ -21,13 +21,13 @@ AppAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
 
-    <link href="<?= Yii::$app->params['cssUrl'] ?>/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?= Yii::$app->params['cssUrl'] ?>/bootstrap.min.css" rel="stylesheet">
     <link href="<?= Yii::$app->params['cssUrl'] ?>/font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link href="<?= Yii::$app->params['cssUrl'] ?>/css/animate.css" rel="stylesheet">
-    <link href="<?= Yii::$app->params['cssUrl'] ?>/css/style.css" rel="stylesheet">
+    <link href="<?= Yii::$app->params['cssUrl'] ?>/animate.css" rel="stylesheet">
+    <link href="<?= Yii::$app->params['cssUrl'] ?>/style.css" rel="stylesheet">
 
-    <script src="<?= Yii::$app->params['cssUrl'] ?>/js/jquery-2.1.1.js"></script>
-    <script src="<?= Yii::$app->params['cssUrl'] ?>/js/bootstrap.min.js"></script>
+    <script src="<?= Yii::$app->params['jsUrl'] ?>/jquery-2.1.1.js"></script>
+    <script src="<?= Yii::$app->params['jsUrl'] ?>/bootstrap.min.js"></script>
 </head>
 <body>
 <?php $this->beginBody() ?>
