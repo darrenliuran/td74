@@ -2,6 +2,9 @@
 
 namespace backend\controllers\member;
 
+use Yii;
+use backend\models\member\AdminMemberModel;
+
 /**
  * UserController.php file
  * User: LiuRan
@@ -15,7 +18,20 @@ class UserController extends \backend\components\controllers\BKController
      */
     public function actionIndex()
     {
+        $condition = [
 
-        return $this->render('index');
+        ];
+
+        $pages = [
+            'page' => intval(Yii::$app->request->get('page', 1)),
+            'pageSize' => Yii::$app->params['pageSize']
+        ];
+
+        list($memberList, $total) = AdminMemberModel::getList($condition, '', $pages);
+
+
+        return $this->render('index', [
+            'memberList' => $memberList
+        ]);
     }
 }

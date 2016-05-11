@@ -226,6 +226,52 @@ class BSHelper
     }
 
     /**
+     * curl请求
+     * @param $url
+     * @param string $type
+     * @param array $data
+     * @return array
+     */
+    public static  function sendCurlRequest($url, $type = 'get', $data = [])
+    {
+        $ch = curl_init();
+
+        if ($type == 'get')
+        {
+            $params = '';
+
+            if (count($data) > 0)
+            {
+                foreach ($data as $key => $value)
+                {
+                    $params .= !empty($params) ? ('&'.$key.'='.$value) : ($key.'='.$value);
+                }
+
+                $url .= '&'.$params;
+            }
+
+            // 设置选项，包括URL
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+        }
+        else if ($type == 'post')
+        {
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            // post数据
+            curl_setopt($ch, CURLOPT_POST, 1);
+            // post的变量
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        }
+
+        $result = json_decode(curl_exec($ch), TRUE);
+        curl_close($ch);
+
+        return $result;
+    }
+
+    /**
      * 保存登录状态
      * @param $name
      * @param $value
