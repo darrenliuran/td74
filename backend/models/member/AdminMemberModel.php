@@ -21,9 +21,14 @@ class AdminMemberModel extends \common\models\member\AdminMemberModel
     {
         $query = self::find();
 
-        if (isset($condition['name']) && !empty($condition['name']))
+        if (isset($condition['email']) && !empty($condition['email']))
         {
-            $query->andWhere('name = :name', [':name' => $condition['name']]);
+            $query->andWhere('email = :email', [':email' => $condition['email']]);
+        }
+
+        if (isset($condition['state']) && $condition['state'] > 0)
+        {
+            $query->andWhere('state = :state', [':state' => $condition['state']]);
         }
 
         $total = $query->count();

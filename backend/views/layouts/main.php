@@ -57,13 +57,13 @@ AppAsset::register($this);
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear">
                                 <span class="block m-t-xs">
-                                    <strong class="font-bold">David Williams</strong>
+                                    <strong class="font-bold"><?= Yii::$app->user->identity->nick ?></strong>
                                 </span>
-                                <span class="text-muted text-xs block">Art Director <b class="caret"></b></span>
+                                <span class="text-muted text-xs block">总管理<b class="caret"></b></span>
                             </span>
                         </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                            <li><a href="<?= Url::to(['/site/logout']) ?>">Logout</a></li>
+                            <li><a href="<?= Url::to(['/site/logout']) ?>">退出</a></li>
                         </ul>
                     </div>
                     <div class="logo-element">
@@ -90,11 +90,6 @@ AppAsset::register($this);
             <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
                 <div class="navbar-header">
                     <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
-                    <form role="search" class="navbar-form-custom" action="search_results.html">
-                        <div class="form-group">
-                            <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
-                        </div>
-                    </form>
                 </div>
                 <ul class="nav navbar-top-links navbar-right">
                     <li>
@@ -196,7 +191,7 @@ AppAsset::register($this);
                         </ul>
                     </li>
                     <li>
-                        <a href="<?= Url::to(['/site/logout']) ?>"><i class="fa fa-sign-out"></i> Log out</a>
+                        <a href="<?= Url::to(['/site/logout']) ?>"><i class="fa fa-sign-out"></i>退出</a>
                     </li>
                     <li>
                         <a class="right-sidebar-toggle">

@@ -7,6 +7,7 @@ use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use common\components\helpers\BSHelper;
 use backend\models\member\IdentityMemberModel;
+use backend\components\constants\BKConstant;
 
 /**
  * Site controller
@@ -73,14 +74,14 @@ class SiteController extends \yii\web\Controller
     public function actionLogin()
     {
         $identityMemberModel = new IdentityMemberModel();
-        echo time();
+
         if (Yii::$app->request->isPost)
         {
             $memberFormData = Yii::$app->request->post('IdentityMemberModel');
             $username = trim($memberFormData['nick']);
             $password = trim($memberFormData['password']);
 
-            /** @var $identityMemberModel IdentityMemberModel 获取用户信息 */
+            /** @var $memberModel IdentityMemberModel 获取用户信息 */
             $memberModel = IdentityMemberModel::getInfoByUsername($username);
 
             if (!is_null($memberModel))
@@ -88,6 +89,10 @@ class SiteController extends \yii\web\Controller
                 if ($memberModel->password != BSHelper::encryptionPassword($password))
                 {
                     Yii::$app->session->setFlash('errorMessage', '密码错误');
+                }
+                else if ($memberModel->state != BKConstant::AdminMemberStatusOpen)
+                {
+                    Yii::$app->session->setFlash('errorMessage', '用户暂未启用');
                 }
                 else if (!Yii::$app->user->login($memberModel, 604800))
                 {

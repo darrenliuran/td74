@@ -34,10 +34,10 @@ CodeMirror.defineMode("dylan", function(_config) {
                                    "C-variable", "C-address"
                                   ],
 
-    // Words that introduce module constant definitions.
+    // Words that introduce module constants definitions.
     // These must also be simple definitions and are
     // appended to otherSimpleDefinitionWords
-    constantSimpleDefinition: ["constant"],
+    constantSimpleDefinition: ["constants"],
 
     // Words that introduce module variable definitions.
     // These must also be simple definitions and are

@@ -19,7 +19,8 @@ class UserController extends \backend\components\controllers\BKController
     public function actionIndex()
     {
         $condition = [
-
+            'email' => Yii::$app->request->get('email', ''),
+            'state' => intval(Yii::$app->request->get('state', 0)),
         ];
 
         $pages = [
@@ -31,7 +32,9 @@ class UserController extends \backend\components\controllers\BKController
 
 
         return $this->render('index', [
-            'memberList' => $memberList
+            'memberList' => $memberList,
+            'condition' => $condition,
+            'adminMemberState' => Yii::$app->params['adminMemberState']
         ]);
     }
 }
