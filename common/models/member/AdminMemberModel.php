@@ -12,6 +12,7 @@ use Yii;
  * @property string $name
  * @property string $email
  * @property string $password
+ * @property integer $state
  * @property integer $login_time
  * @property integer $add_time
  * @property string $add_ip
@@ -34,10 +35,10 @@ class AdminMemberModel extends \common\components\models\BSModel
     public function rules()
     {
         return [
-            [['login_time', 'add_time', 'update_time'], 'integer'],
+            [['state', 'login_time', 'add_time', 'update_time'], 'integer'],
             [['nick', 'name'], 'string', 'max' => 64],
             [['email'], 'string', 'max' => 128],
-            [['email'], 'unique', 'message' => '油箱已存在'],
+            [['email'], 'unique', 'message' => '邮箱已存在'],
             [['password'], 'string', 'max' => 32],
             [['add_ip', 'update_ip'], 'string', 'max' => 15]
         ];
@@ -54,6 +55,7 @@ class AdminMemberModel extends \common\components\models\BSModel
             'name' => 'Name',
             'email' => 'Email',
             'password' => 'Password',
+            'state' => 'State',
             'login_time' => 'Login Time',
             'add_time' => 'Add Time',
             'add_ip' => 'Add Ip',

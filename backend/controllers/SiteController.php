@@ -96,6 +96,8 @@ class SiteController extends \yii\web\Controller
                 }
                 else if (!Yii::$app->user->login($memberModel, 604800))
                 {
+                    $memberModel->login_time = time();
+                    $memberModel->save(TRUE);
                     Yii::$app->session->setFlash('errorMessage', '登录失败');
                 }
                 else

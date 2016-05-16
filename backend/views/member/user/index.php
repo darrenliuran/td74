@@ -20,7 +20,7 @@
         </ol>
     </div>
     <div class="col-lg-2">
-        <button type="submit" class="btn btn-primary btn-sm pull-right m-t-lg">添加</button>
+        <a href="#" class="btn btn-primary btn-sm pull-right m-t-lg">添加</a>
     </div>
 </div>
 <div class="wrapper wrapper-content animated fadeInRight ecommerce">
@@ -49,50 +49,11 @@
         </form>
     </div>
 
-
-
-
-    <a data-toggle="modal" class="btn btn-primary" href="#modal-form">Form in simple modal box</a>
-    <div id="modal-form" class="modal fade" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" aria-hidden="true" tabindex="-1">×</button>
-                    <h4>Insert Link</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="row-fluid">
-                        <div class="form-group">
-                            <label>Text to display</label>
-                            <input class="note-link-text form-control span12" disabled="" type="text">
-                        </div>
-                        <div class="form-group">
-                            <label>To what URL should this link go?</label>
-                            <input class="note-link-url form-control span12" type="text">
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" checked=""> Open in new window
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button href="#" class="btn btn-primary note-link-btn">Insert Link</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox">
                 <div class="ibox-content">
-
-                    <table class="table table-stripped toggle-arrow-tiny" data-page-size="15">
+                    <table class="table table-stripped toggle-arrow-tiny">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -118,7 +79,7 @@
                                         </td>
                                         <td class="text-right">
                                             <div class="btn-group">
-                                                <button class="btn-white btn btn-xs">编辑</button>
+                                                <button class="btn-white btn btn-xs" data-toggle="modal" data-target="#update-modal">编辑</button>
                                                 <button class="btn-white btn btn-xs">删除</button>
                                             </div>
                                         </td>
@@ -158,6 +119,32 @@
                         </tfoot>
                     </table>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 编辑 -->
+<div class="modal inmodal" id="update-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated fadeIn">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <small class="font-bold"></small>
+            </div>
+            <div class="modal-body">
+                <form method="get" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Sample Input</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="昵称" class="form-control">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">保存</button>
             </div>
         </div>
     </div>
