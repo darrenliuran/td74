@@ -3,7 +3,7 @@
 namespace common\components\models;
 
 use yii;
-use common\components\helper\BSHelper;
+use common\components\helpers\BSHelper;
 
 /**
  * BSModel.php file

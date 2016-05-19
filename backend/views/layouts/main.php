@@ -83,7 +83,7 @@ AppAsset::register($this);
                     </ul>
                 </li>
                 <li class="">
-                    <a href="#"><i class="fa fa-align-justify"></i><span class="nav-label">分类</span><span class="fa arrow"></span></a>
+                    <a href="<?= Url::to('/category/manage') ?>"><i class="fa fa-align-justify"></i><span class="nav-label">分类</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
                         <li class="active"><a href="<?= Url::to('/category/manage') ?>">分类管理</a></li>
                     </ul>
