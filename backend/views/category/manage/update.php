@@ -1,7 +1,7 @@
 <?php
-    use yii\helpers\Url;
-    use yii\helpers\Html;
-    use yii\widgets\ActiveForm;
+use yii\helpers\Url;
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
 ?>
 <!-- FooTable -->
 
@@ -16,7 +16,7 @@
                 <a href="<?= Url::to(['/category/manage']); ?>">分类管理</a>
             </li>
             <li class="active">
-                <strong>添加</strong>
+                <strong>更新</strong>
             </li>
         </ol>
     </div>

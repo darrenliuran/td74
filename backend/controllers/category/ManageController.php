@@ -52,4 +52,26 @@ class ManageController extends \backend\components\controllers\BKController
             'categoryList' => $categoryList,
         ]);
     }
+
+    /**
+     * 更新
+     */
+    public function actionUpdate()
+    {
+        $id = intval(Yii::$app->request->get('id', 0));
+
+        $categoryModel = GoodsCategoryModel::findOne($id);
+
+        if (Yii::$app->request->isPost)
+        {
+
+        }
+
+        $categoryList = GoodsCategoryModel::getAll(0);
+
+        return $this->render('update', [
+            'categoryModel' => $categoryModel,
+            'categoryList' => $categoryList
+        ]);
+    }
 }
