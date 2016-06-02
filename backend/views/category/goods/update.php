@@ -13,7 +13,7 @@ use yii\widgets\ActiveForm;
                 <a href="<?= Url::to(['/default']); ?>">首页</a>
             </li>
             <li>
-                <a href="<?= Url::to(['/category/manage']); ?>">分类管理</a>
+                <a href="<?= Url::to(['/category/goods']); ?>">分类管理</a>
             </li>
             <li class="active">
                 <strong>更新</strong>
@@ -24,11 +24,11 @@ use yii\widgets\ActiveForm;
 <div class="row m-t">
     <div class="col-lg-12">
         <div class="ibox float-e-margins">
-            <div class="ibox-title">
-                <h5><small></small></h5>
+            <div class="ibox-title forum-info text-danger">
+                <?= Yii::$app->session->getFlash('successMessage') ?>
             </div>
             <div class="ibox-content">
-                <form id="category-form" action="/category/manage/add" method="post" class="form-horizontal">
+                <form id="category-form" action="<?= Url::to(['/category/goods/update', 'id' => $categoryModel->id]) ?>" method="post" class="form-horizontal">
                     <input type="hidden" name="_csrf" value="<?= Yii::$app->request->getCsrfToken() ?>">
                     <div class="form-group">
                         <label class="col-sm-2 control-label">父级分类</label>
@@ -37,7 +37,7 @@ use yii\widgets\ActiveForm;
                                 <option value="0">顶级分类</option>
                                 <?php if (count($categoryList) > 0): ?>
                                     <?php foreach ($categoryList as $category): ?>
-                                        <option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
+                                        <option value="<?= $category['id'] ?>" <?= $categoryModel->parent_id == $category['id'] ? 'selected="selected"' : '' ?>><?= $category['name'] ?></option>
                                     <?php endforeach; ?>
                                 <?php endif; ?>
                             </select>

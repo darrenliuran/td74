@@ -7,13 +7,13 @@
 
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h2>分类管理</h2>
+        <h2>产品分类管理</h2>
         <ol class="breadcrumb">
             <li>
                 <a href="<?= Url::to(['/default']); ?>">首页</a>
             </li>
             <li>
-                <a href="<?= Url::to(['/category/manage']); ?>">分类管理</a>
+                <a href="<?= Url::to(['/category/goods']); ?>">产品分类管理</a>
             </li>
             <li class="active">
                 <strong>添加</strong>
@@ -28,7 +28,7 @@
                 <h5><small></small></h5>
             </div>
             <div class="ibox-content">
-                <form id="category-form" action="/category/manage/add" method="post" class="form-horizontal">
+                <form id="category-form" action="/category/goods/add" method="post" class="form-horizontal">
                     <input type="hidden" name="_csrf" value="<?= Yii::$app->request->getCsrfToken() ?>">
                     <div class="form-group">
                         <label class="col-sm-2 control-label">父级分类</label>

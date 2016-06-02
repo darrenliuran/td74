@@ -6,12 +6,12 @@ use Yii;
 use backend\models\goods\GoodsCategoryModel;
 
 /**
- * ManageController.php file
+ * GoodsController.php file
  * User: LiuRan
  * Date: 2016/5/16 0016
  * Time: 下午 1:01
  */
-class ManageController extends \backend\components\controllers\BKController
+class GoodsController extends \backend\components\controllers\BKController
 {
     /**
      * 首页
@@ -41,7 +41,7 @@ class ManageController extends \backend\components\controllers\BKController
 
             if ($categoryModel->save(TRUE))
             {
-                Yii::$app->session->addFlash('successMessage', '添加分组成功');
+                Yii::$app->session->setFlash('successMessage', '添加分组成功');
             }
         }
 
@@ -60,11 +60,21 @@ class ManageController extends \backend\components\controllers\BKController
     {
         $id = intval(Yii::$app->request->get('id', 0));
 
+        /** @var $categoryModel GoodsCategoryModel */
         $categoryModel = GoodsCategoryModel::findOne($id);
 
         if (Yii::$app->request->isPost)
         {
+            $data = Yii::$app->request->post('GoodsCategoryModel');
+            $data['parent_id'] = Yii::$app->request->post('parentId');
+            $data['level'] = $data['parent_id'] > 0 ? 2 : 1;
 
+            $categoryModel->attributes = $data;
+
+            if ($categoryModel->save(TRUE))
+            {
+                Yii::$app->session->setFlash('successMessage', '编辑分组成功');
+            }
         }
 
         $categoryList = GoodsCategoryModel::getAll(0);

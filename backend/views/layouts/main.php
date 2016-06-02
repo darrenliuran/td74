@@ -70,24 +70,39 @@ AppAsset::register($this);
                         IN+
                     </div>
                 </li>
-                <li class="">
-                    <a href="#"><i class="fa fa-windows"></i> <span class="nav-label">系统</span> <span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level collapse">
-                        <li class="active"><a href="#">Dashboard v.1</a></li>
-                    </ul>
-                </li>
-                <li class="active">
-                    <a href="<?= Url::to(['/member/user']) ?>"><i class="fa fa-child"></i> <span class="nav-label">会员</span> <span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level collapse">
-                        <li class="active"><a href="<?= Url::to(['/member/user']) ?>">用户管理</a></li>
-                    </ul>
-                </li>
-                <li class="">
-                    <a href="<?= Url::to('/category/manage') ?>"><i class="fa fa-align-justify"></i><span class="nav-label">分类</span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level collapse">
-                        <li class="active"><a href="<?= Url::to('/category/manage') ?>">分类管理</a></li>
-                    </ul>
-                </li>
+
+                <?php
+                    $controller = Yii::$app->controller->id;
+                    $controllerList = explode('/', $controller);
+                    $action = Yii::$app->controller->action->id;
+                ?>
+
+                <?php foreach (Yii::$app->params['navLeft'] as $key => $nav): ?>
+                    <li class="<?= strpos($key, strtolower($controllerList[0])) !== FALSE ? 'active' : '' ?>">
+                        <a href="#"><i class="fa <?= $nav['icon'] ?>"></i>
+                            <span class="nav-label"><?= $nav['name'] ?></span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level collapse">
+                            <?php foreach ($nav['childList'] as $childNav): ?>
+                                <li class="<?= strtolower('/'.$controller.'/'.$action) == $childNav['url'] ? 'active' : '' ?>"><a href="<?= $childNav['url'] ?>"><?= $childNav['name'] ?></a></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </li>
+                <?php endforeach; ?>
+
+<!--                <li class="active">-->
+<!--                    <a href="--><?//= Url::to(['/member/user']) ?><!--"><i class="fa fa-child"></i> <span class="nav-label">会员</span> <span class="fa arrow"></span></a>-->
+<!--                    <ul class="nav nav-second-level collapse">-->
+<!--                        <li class="active"><a href="--><?//= Url::to(['/member/user']) ?><!--">用户管理</a></li>-->
+<!--                    </ul>-->
+<!--                </li>-->
+<!--                <li class="">-->
+<!--                    <a href="--><?//= Url::to('/category/manage') ?><!--"><i class="fa fa-align-justify"></i><span class="nav-label">分类</span><span class="fa arrow"></span></a>-->
+<!--                    <ul class="nav nav-second-level collapse">-->
+<!--                        <li class="active"><a href="--><?//= Url::to('/category/manage') ?><!--">产品分类管理</a></li>-->
+<!--                    </ul>-->
+<!--                </li>-->
             </ul>
         </div>
     </nav>

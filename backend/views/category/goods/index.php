@@ -21,7 +21,7 @@ use backend\components\constants\BKConstant;
                 <a href="<?= Url::to(['/default']); ?>">首页</a>
             </li>
             <li>
-                <a href="<?= Url::to(['/category/manage']); ?>">分类管理</a>
+                <a href="<?= Url::to(['/category/goods']); ?>">分类管理</a>
             </li>
             <li class="active">
                 <strong>列表</strong>
@@ -29,25 +29,15 @@ use backend\components\constants\BKConstant;
         </ol>
     </div>
     <div class="col-lg-2">
-        <a href="<?= Url::to(['/category/manage/add']) ?>" class="btn btn-primary btn-sm pull-right m-t-lg">添加</a>
+        <a href="<?= Url::to(['/category/goods/add']) ?>" class="btn btn-primary btn-sm pull-right m-t-lg">添加</a>
     </div>
 </div>
 <div class="wrapper wrapper-content animated fadeInRight ecommerce">
-    <div class="ibox-content m-b-sm border-bottom">
-        <form action="<?= Url::to(['/category/manage']) ?>" method="get">
-            <div class="row">
-
-            </div>
-        </form>
-    </div>
-
-
-
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox ">
                 <div class="ibox-title">
-                    <h5>Nestable basic list</h5>
+                    <h5></h5>
                 </div>
                 <div class="ibox-content">
                     <div class="dd" id="nestable">
@@ -59,9 +49,9 @@ use backend\components\constants\BKConstant;
                                             <div class="dd-handle">
                                                 <?= $goodsCategory['name'] ?>
 
-                                                <div class="btn-group">
-                                                    <button class="btn-white btn btn-xs" data-toggle="modal" data-target="#update-modal">编辑</button>
-                                                    <button class="btn-white btn btn-xs">删除</button>
+                                                <div class="btn-group" style="float:right;">
+                                                    <a href="<?= Url::to(['category/goods/update', 'id' => $goodsCategory['id']]) ?>" class="btn-white btn btn-xs">编辑</a>
+                                                    <a href="javascript:void(0);" data-request-url="<?= Url::to(['category/goods/remove', 'id' => $goodsCategory['id']]) ?>" class="btn-white btn btn-xs remove-btn">删除</a>
                                                 </div>
                                             </div>
                                         </li>
@@ -71,8 +61,8 @@ use backend\components\constants\BKConstant;
                                                 <?= $goodsCategory['name'] ?>
 
                                                 <div class="btn-group" style="float:right;">
-                                                    <button class="btn-white btn btn-xs" data-toggle="modal" data-target="#update-modal">编辑</button>
-                                                    <button class="btn-white btn btn-xs">删除</button>
+                                                    <a href="<?= Url::to(['category/goods/update', 'id' => $goodsCategory['id']]) ?>" class="btn-white btn btn-xs">编辑</a>
+                                                    <a href="javascript:void(0);" data-request-url="<?= Url::to(['category/goods/remove', 'id' => $goodsCategory['id']]) ?>" class="btn-white btn btn-xs remove-btn">删除</a>
                                                 </div>
                                             </div>
                                             <ol class="dd-list">
@@ -82,8 +72,8 @@ use backend\components\constants\BKConstant;
                                                             <?= $item['name'] ?>
 
                                                             <div class="btn-group" style="float:right;">
-                                                                <a href="<?= Url::to(['category/manage/update', 'id' => $item['id']]) ?>" class="btn-white btn btn-xs" data-toggle="modal" data-target="#update-modal">编辑</a>
-                                                                <a href="javascript:void(0);" data-request-url="<?= Url::to(['category/manage/remove', 'id' => $item['id']]) ?>" class="btn-white btn btn-xs">删除</a>
+                                                                <a href="<?= Url::to(['category/goods/update', 'id' => $item['id']]) ?>" class="btn-white btn btn-xs">编辑</a>
+                                                                <a href="javascript:void(0);" data-request-url="<?= Url::to(['category/goods/remove', 'id' => $item['id']]) ?>" class="btn-white btn btn-xs remove-btn">删除</a>
                                                             </div>
                                                         </div>
                                                     </li>
@@ -103,10 +93,11 @@ use backend\components\constants\BKConstant;
 <!-- Nestable List -->
 <script src="<?= Yii::$app->params['jsUrl'] ?>/plugins/nestable/jquery.nestable.js"></script>
 <script type="text/javascript">
-    $(document).ready(function(){
-        // activate Nestable for list 1
-        $('#nestable').nestable({
-            group: 1
-        });
-    });
+//    $(document).ready(function(){
+//        $('#nestable').nestable({
+//            group: 3
+//        });
+//    });
+
+    //$('.btn-group')
 </script>
