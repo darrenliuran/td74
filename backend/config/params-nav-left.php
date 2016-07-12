@@ -30,7 +30,7 @@ return [
             'icon' => 'fa-align-justify',
             'childList' => [
                 ['name' => '产品分类', 'url' => Url::to('/category/goods/index')],
-                ['name' => '文章分类', 'url' => Url::to('/category/article/index')]
+                ['name' => '文章分类', 'url' => Url::to('/category/news/index')]
             ]
         ],
     ]
